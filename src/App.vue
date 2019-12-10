@@ -1,17 +1,17 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <Formik :initial-values="{ email: '', color: 'red', firstName: '', test: 'Oui' }">
+    <input type="text"/>
+    <component v-bind:is="`FormInput`" id="color" ></component>
+    <component v-bind:is="`FormInput`" id="check"  type="checkbox"></component>
+  </Formik>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Formik from './components/Form.vue'
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Formik,
   }
 }
 </script>
