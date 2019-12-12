@@ -5,7 +5,8 @@
                :id="id"
                :name="name"
                :required="required"
-               :disabled="disabled"/>
+               :disabled="disabled"
+               @input="handleInput"/>
     </div>
 </template>
 
@@ -26,10 +27,17 @@
       disabled : Boolean,
     },
     created() {
-      // console.log('helllo',this.setFormValue)
-
       this.value = this.getFormInitialValue(this.id);
       this.setFormValue(this.id,this.value);
+    },
+    methods : {
+      handleInput (e) {
+        if (e.target.type === 'checkbox') {
+          this.setFormValue(this.id,e.target.checked);
+        } else {
+          this.setFormValue(this.id,e.target.value);
+        }
+      }
     }
 
   }

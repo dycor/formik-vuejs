@@ -1,17 +1,29 @@
 <template>
-  <Formik :initial-values="{ email: '', color: 'red', firstName: '', test: 'Oui' }">
-    <input type="text"/>
-    <component v-bind:is="`FormInput`" id="color" ></component>
-    <component v-bind:is="`FormInput`" id="check"  type="checkbox"></component>
+  <Formik :initial-values="{ email: '', color: 'red', firstName: '', password: 'Oui' }" @onSubmit="handleSubmit">
+    <form>
+      <Field component="FormInput" label="Password" type="password" name="password" placeholder="Password" id="password"/>
+      <Field component="FormInput" label="check" type="checkbox" name="password" id="check"/>
+      <Field component="FormInput" id="color"/>
+      <input type="submit" value="submit">
+    </form>
   </Formik>
 </template>
 
 <script>
 import Formik from './components/Form.vue'
+import Field from "./components/Field";
 export default {
   name: 'app',
   components: {
     Formik,
+    Field
+  },
+  methods : {
+    handleSubmit : function ({values,event}) {
+      // eslint-disable-next-line no-console
+      console.log('submit from app',values);
+      event.preventDefault();
+    }
   }
 }
 </script>

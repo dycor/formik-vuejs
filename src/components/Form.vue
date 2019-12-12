@@ -1,11 +1,8 @@
 <template>
-    <div>
+    <div @submit="handleSubmit" >
 <!--        {{initialValues}}-->
-        <slot>
-
-        </slot>
-        <button @click.prevent="handleSubmit">Click</button>
-        {{form.values}}
+        <slot />
+        <!--        {{form.values}}-->
     </div>
 </template>
 
@@ -20,16 +17,17 @@
         form: {
           initialValues : this.initialValues,
           values : {},
-          errors : []
         }
       }
     },
     methods : {
       setFormValue: function (key,value) { this.form.values[key] = value },
       getFormInitialValue : function (key) { return this.initialValues[key] },
-      handleSubmit : function () {
-        // eslint-disable-next-line no-console
-        console.log(this.form.values)
+      handleSubmit : function (e) {
+        this.$emit('onSubmit', {
+          values: this.form.values,
+          event: e,
+        });
       }
     },
     provide: function () {
