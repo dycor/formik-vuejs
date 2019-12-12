@@ -1,11 +1,7 @@
 <template>
     <div>
-        <input :type="type"
-               :value="value"
-               :id="id"
-               :name="name"
-               :required="required"
-               :disabled="disabled"
+        <input  v-bind="$props"
+                :value="value"
                @input="handleInput"/>
     </div>
 </template>
@@ -25,6 +21,7 @@
       id : String,
       required : Boolean,
       disabled : Boolean,
+      checked : Boolean,
     },
     created() {
       this.value = this.getFormInitialValue(this.id);

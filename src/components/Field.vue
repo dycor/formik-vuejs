@@ -14,18 +14,9 @@
       type : String,
       id : String,
       required : Boolean,
+      checked : Boolean,
       component : String
-    },
-    methods : {
-      loger : function () {
-        //eslint-disable-next-line
-        console.log(this.name,this.label)
-      }
-    },
-    // created() {
-    //   // eslint-disable-next-line no-console
-    //   console.log(this.$props)
-    // }
+    }
   }
 </script>
 

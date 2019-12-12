@@ -2,7 +2,7 @@
   <Formik :initial-values="{ email: '', color: 'red', firstName: '', password: 'Oui' }" @onSubmit="handleSubmit">
     <form>
       <Field component="FormInput" label="Password" type="password" name="password" placeholder="Password" id="password"/>
-      <Field component="FormInput" label="check" type="checkbox" name="password" id="check"/>
+      <Field component="FormInput" label="check" type="checkbox" name="password" id="check" checked/>
       <Field component="FormInput" id="color"/>
       <input type="submit" value="submit">
     </form>
