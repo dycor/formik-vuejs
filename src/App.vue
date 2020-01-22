@@ -1,17 +1,29 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <Formik :initial-values="{ email: '', color: 'red', firstName: '', password: 'Oui' }" @onSubmit="handleSubmit">
+    <form>
+      <Field component="FormInput" label="Password" type="password" name="password" placeholder="Password" id="password"/>
+      <Field component="FormInput" label="check" type="checkbox" name="password" id="check" checked/>
+      <Field component="FormInput" id="color"/>
+      <input type="submit" value="submit">
+    </form>
+  </Formik>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Formik from './components/Form.vue'
+import Field from "./components/Field";
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Formik,
+    Field
+  },
+  methods : {
+    handleSubmit : function ({values,event}) {
+      // eslint-disable-next-line no-console
+      console.log('submit from app',values);
+      event.preventDefault();
+    }
   }
 }
 </script>
