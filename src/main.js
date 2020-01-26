@@ -1,7 +1,10 @@
 import Vue from 'vue'
+import Vuetify from 'vuetify'
 import App from './App.vue'
+import "./plugins/vuetify.js"
 
 Vue.config.productionTip = false;
+Vue.use(Vuetify)
 const requireComponent = require.context(
   // The relative path of the components folder
   './components',
@@ -36,6 +39,11 @@ requireComponent.keys().forEach(fileName => {
   )
 });
 
+export default new Vuetify({ })
+
+/* eslint-disable no-new */
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  el: '#app',
+  vuetify: new Vuetify(),
+  render: h => h(App)
+})
