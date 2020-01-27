@@ -2,7 +2,7 @@
     <v-container fill-height >
       <v-layout align-center justify-content>
         <v-flex xs12 sm8 md4>
-          <Formik :initial-values="{ email: 'email@email.com', color: 'blue', password: 'Oui' }" @onSubmit="handleSubmit">
+          <Formik :initial-values="{ email: 'email@email.com', password: '' }" @onSubmit="handleSubmit">
             <v-form>
               <v-card class="elevation-12">
                 <v-toolbar dark color="blue">
@@ -19,7 +19,7 @@
                 <v-divider light></v-divider>
                   <v-card-actions>
                       <v-btn rounded color='indigo' dark>
-                        Sign In
+                        <router-link to="/register">Registrer</router-link>
                       </v-btn>
                       <v-spacer></v-spacer>
                       <v-btn rounded color='primary' dark>
@@ -28,16 +28,16 @@
                   </v-card-actions>
              </v-card>         
             </v-form>
-    </Formik>
+        </Formik>
         </v-flex>
       </v-layout>
     </v-container>
 </template>
 
 <script>
-import Formik from '@/components/Form.vue';
-import Field from '@/components/Field.vue';
-//import axios from '@/utils/axios';
+import Formik from '../components/Form.vue';
+import Field from '../components/Field.vue';
+import axios from 'axios';
 //import store from '@/store';
 export default {
   name: 'Login',
@@ -46,8 +46,23 @@ export default {
     Field
   },
   methods: {
-    handleSubmit({ event }) {
+    handleSubmit({ event, values }) {
       event.preventDefault();
+      axios
+        .post('/login', {
+          email: values.email,
+          password: values.password
+        })
+        .then(response => {
+          if (response.status === 200) {
+            localStorage.setItem('userConnected', response.data);
+            this.$router.push('/votes');
+          }
+        })
+        .catch(response => {
+          // eslint-disable-next-line no-console
+          console.log(response);
+        });
     }
   }
 };
