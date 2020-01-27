@@ -28,7 +28,7 @@
                                 <router-link to="/login">Back</router-link>
                             </v-btn>
                       <v-spacer></v-spacer>
-                            <v-btn rounded color='primary' dark>
+                            <v-btn rounded color='primary' dark type="submit">
                                 Register
                             </v-btn>
                         </v-card-actions>
@@ -56,15 +56,23 @@ name: 'Register',
     handleSubmit({ event, values }) {
       event.preventDefault();
       axios
-        .post('/users', {
-            email: values.email,
-            firstname: values.firstname,
-            lastname: values.lastname,
-            password: values.password
+      //a remplpacer par /user pour créer des users avec l'api
+      //commentaire a decommenter pour l'api
+        .post('https://reqres.in/api/users', {
+            //email: values.email,
+            //firstname: values.firstname,
+            //lastname: values.lastname,
+            //password: values.password,
+            //accessLevel: 0
+            name: values.firstname,
+            job: values.lastname
         })
         .then(response => {
-          if (response.status === 200) {
-            this.$router.push('/votes');
+            //remplacer 201 par 200
+          if (response.status === 201) {
+            this.$router.push('/login');
+            // eslint-disable-next-line no-console
+            console.log("user added")
           }
         })
         .catch(response => {

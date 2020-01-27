@@ -2,7 +2,7 @@
     <v-container fill-height >
       <v-layout align-center justify-content>
         <v-flex xs12 sm8 md4>
-          <Formik :initial-values="{ email: 'email@email.com', password: '' }" @onSubmit="handleSubmit">
+          <Formik :initial-values="{ email: '', password: '' }" @onSubmit="handleSubmit">
             <v-form>
               <v-card class="elevation-12">
                 <v-toolbar dark color="blue">
@@ -19,10 +19,10 @@
                 <v-divider light></v-divider>
                   <v-card-actions>
                       <v-btn rounded color='indigo' dark>
-                        <router-link to="/register">Registrer</router-link>
+                        <router-link color="white" to="/register">Registrer</router-link>
                       </v-btn>
                       <v-spacer></v-spacer>
-                      <v-btn rounded color='primary' dark>
+                      <v-btn rounded color='primary' dark type="submit">
                         Login
                       </v-btn>
                   </v-card-actions>
@@ -48,15 +48,21 @@ export default {
   methods: {
     handleSubmit({ event, values }) {
       event.preventDefault();
+      //post a remplacer par les /login pour l'api
       axios
-        .post('/login', {
+        .post('https://reqres.in/api/login', {
           email: values.email,
           password: values.password
         })
         .then(response => {
           if (response.status === 200) {
-            localStorage.setItem('userConnected', response.data);
+            //permet de stocker le token de la personne connectée
+            localStorage.token = response.data.token;
+            //Access level a decommenter pour recuperer l'acceslevel du gars
+            //localStorage.accessLevel = response.data.accessLevel;
             this.$router.push('/votes');
+            // eslint-disable-next-line no-console
+            console.log("Connected")
           }
         })
         .catch(response => {
