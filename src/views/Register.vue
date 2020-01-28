@@ -53,11 +53,16 @@ name: 'Register',
     Field
   },
   methods: {
+    showurl : function () {
+        // eslint-disable-next-line no-console
+      console.log(this.$route.query.page)
+    },
     handleSubmit({ event, values }) {
       event.preventDefault();
       axios
       //a remplpacer par /user pour créer des users avec l'api
       //commentaire a decommenter pour l'api
+
         .post('https://reqres.in/api/users', {
             //email: values.email,
             //firstname: values.firstname,

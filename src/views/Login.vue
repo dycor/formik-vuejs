@@ -66,6 +66,7 @@ export default {
           }
         })
         .catch(response => {
+          alert("Email or password invalid")
           // eslint-disable-next-line no-console
           console.log(response);
         });
