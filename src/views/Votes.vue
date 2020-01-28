@@ -4,6 +4,9 @@
       <v-toolbar flat>
         <v-toolbar-title class="black--text" align-center>Votes</v-toolbar-title>
         <v-spacer></v-spacer>
+        <v-btn rounded class="btn btn-primary">
+          <router-link to="/add-vote">Créer un vote</router-link>
+        </v-btn>
       </v-toolbar>
       <v-divider></v-divider>
         <v-card class="elevation-12" style="margin-top: 20px;">

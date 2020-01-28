@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
 import Votes from './views/Votes.vue';
+import AddVote from './views/AddVote.vue';
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/votes',
     name: 'Votes',
     component: Votes
+  },
+  {
+    path: '/add-vote',
+    name: 'AddVote',
+    component: AddVote
   }
 ];
 
