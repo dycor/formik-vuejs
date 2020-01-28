@@ -37,7 +37,7 @@
 <script>
 import Formik from '../components/Form.vue';
 import Field from '../components/Field.vue';
-import axios from 'axios';
+import axios from '../helpers/axios';
 //import store from '@/store';
 export default {
   name: 'Login',
@@ -50,16 +50,16 @@ export default {
       event.preventDefault();
       //post a remplacer par les /login pour l'api
       axios
-        .post('https://reqres.in/api/login', {
+        .post('/login', {
           email: values.email,
           password: values.password
         })
         .then(response => {
           if (response.status === 200) {
             //permet de stocker le token de la personne connectée
-            localStorage.token = response.data.token;
+            localStorage.token = response.data.JWT;
             //Access level a decommenter pour recuperer l'acceslevel du gars
-            //localStorage.accessLevel = response.data.accessLevel;
+            localStorage.accessLevel = response.data.AccessLevel;
             this.$router.push('/votes');
             // eslint-disable-next-line no-console
             console.log("Connected")
