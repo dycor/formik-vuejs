@@ -44,7 +44,7 @@
 
 import Formik from '../components/Form.vue';
 import Field from '../components/Field.vue';
-import axios from 'axios';
+import axios from '../helpers/axios';
 
 export default {
 name: 'Register',
@@ -62,19 +62,18 @@ name: 'Register',
       axios
       //a remplpacer par /user pour créer des users avec l'api
       //commentaire a decommenter pour l'api
-
-        .post('https://reqres.in/api/users', {
-            //email: values.email,
-            //firstname: values.firstname,
-            //lastname: values.lastname,
-            //password: values.password,
-            //accessLevel: 0
-            name: values.firstname,
-            job: values.lastname
+        .post('/user', {
+            email: values.email,
+            firstname: values.firstname,
+            lastname: values.lastname,
+            password: values.password,
+            accessLevel: 0
+            //name: values.firstname,
+            //job: values.lastname
         })
         .then(response => {
             //remplacer 201 par 200
-          if (response.status === 201) {
+          if (response.status === 200) {
             this.$router.push('/login');
             // eslint-disable-next-line no-console
             console.log("user added")

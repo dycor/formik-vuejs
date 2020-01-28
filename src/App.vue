@@ -25,7 +25,7 @@ export default {
       return localStorage.token;
     },
     isAdmin() {
-      return localStorage.accessLevel;
+      if(localStorage.accessLevel == 1 ) return true
     },
     logout: function () {
       localStorage.removeItem('token');
