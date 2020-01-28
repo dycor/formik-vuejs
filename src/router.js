@@ -3,6 +3,8 @@ import VueRouter from 'vue-router';
 import Login from './views/Login.vue';
 import Register from './views/Register.vue';
 import Votes from './views/Votes.vue';
+import Profile from './views/Profile.vue';
+import EditUser from './views/EditUser.vue';
 
 Vue.use(VueRouter);
 
@@ -27,6 +29,16 @@ const routes = [
     path: '/votes',
     name: 'Votes',
     component: Votes
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
+  },
+  {
+    path: '/profile/edit',
+    name: 'ProfileEdit',
+    component: EditUser
   }
 ];
 

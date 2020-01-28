@@ -1,5 +1,4 @@
 import axios from 'axios';
-//import store from '@/store';
 
 let instance = axios.create({
   baseURL: 'http://localhost:8085'
