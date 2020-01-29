@@ -56,9 +56,9 @@ name: 'AddVote',
       axios
       //a remplpacer par /user pour créer des users avec l'api
       //commentaire a decommenter pour l'api
-        .post('/user', {
+        .post('/vote', {
             title: values.title,
-            desc: values.desc
+            description: values.desc
             //name: values.firstname,
             //job: values.lastname
         })
