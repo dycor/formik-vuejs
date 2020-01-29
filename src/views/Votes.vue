@@ -9,15 +9,15 @@
         </v-btn>
       </v-toolbar>
       <v-divider></v-divider>
-        <v-card class="elevation-12" style="margin-top: 20px;">
+        <v-card v-for="vote in votes" :key="vote.id" class="elevation-12" style="margin-top: 20px;">
                 <v-toolbar dark color="blue">
                   <v-toolbar-title>
-                    Réforme des retraites
+                    Identifiant du vote : {{vote.uuid}}
                   </v-toolbar-title>  
                 </v-toolbar>
-                <v-card-title class="headline">Description</v-card-title>
+                <v-card-title class="headline">{{vote.title}}</v-card-title>
                 <v-card-subtitle>
-                  Ceci est une petite description de la nouvelle reforme des retraites.
+                  {{vote.description}}
                 </v-card-subtitle>
             <v-card-actions>
               <v-spacer></v-spacer>
@@ -25,28 +25,34 @@
             </v-card-actions>
           </v-card>   
           <v-divider light></v-divider>
-        <v-card class="elevation-12" style="margin-top: 20px;">
-                <v-toolbar dark color="blue">
-                  <v-toolbar-title>
-                    Entrée de la concurrence sur les rails français
-                  </v-toolbar-title>  
-                </v-toolbar>
-                <v-card-title class="headline">Description</v-card-title>
-                <v-card-subtitle>
-                  Fuck la SNCF, baissez les prix bande de con !!!!!
-                </v-card-subtitle>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn text color='indigo' dark>Suite</v-btn>
-            </v-card-actions>
-          </v-card> 
     </v-card>
   </v-container>
 </template>
 
 <script>
-export default {
+  
+import axios from '../helpers/axios';
 
+export default {
+    name: 'Votes',
+    data() {
+    return {
+      votes: {}
+    };
+  },
+    created() {
+    axios
+      .get(`/vote`)
+      .then(response => {
+        if (response.status === 200) {
+          this.votes = response.data;
+        }
+      })
+      .catch(response => {
+        // eslint-disable-next-line no-console
+        console.log(response);
+      });
+  }
 }
 </script>
 
