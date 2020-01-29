@@ -4,6 +4,7 @@ import Login from './views/Login.vue';
 import Register from './views/Register.vue';
 import Votes from './views/Votes.vue';
 import AddVote from './views/AddVote.vue';
+import ViewVote from './views/AddVote.vue';
 import Profile from './views/Profile.vue';
 import EditUser from './views/EditUser.vue';
 
@@ -45,6 +46,11 @@ const routes = [
     path: '/profile/edit',
     name: 'ProfileEdit',
     component: EditUser
+  },
+  {
+    path: '/vote/:id',
+    name: 'ViewVote',
+    component: ViewVote
   }
 ];
 

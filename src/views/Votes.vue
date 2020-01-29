@@ -21,7 +21,9 @@
                 </v-card-subtitle>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn text color='indigo' dark>Suite</v-btn>
+              <v-btn rounded class="btn btn-primary">
+                <router-link :to="'/vote/'+vote.uuid">Créer un vote</router-link>
+              </v-btn>
             </v-card-actions>
           </v-card>   
           <v-divider light></v-divider>
