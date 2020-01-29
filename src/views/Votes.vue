@@ -9,7 +9,7 @@
         </v-btn>
       </v-toolbar>
       <v-divider></v-divider>
-        <v-card v-for="vote in votes" :key="vote.id" class="elevation-12" style="margin-top: 20px;">
+          <v-card v-for="vote in votes" :key="vote.id" class="elevation-12" style="margin-top: 20px;">
                 <v-toolbar dark color="blue">
                   <v-toolbar-title>
                     Identifiant du vote : {{vote.uuid}}
