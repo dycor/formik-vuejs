@@ -53,28 +53,19 @@ name: 'Register',
     Field
   },
   methods: {
-    showurl : function () {
-        // eslint-disable-next-line no-console
-      console.log(this.$route.query.page)
-    },
     handleSubmit({ event, values }) {
       event.preventDefault();
       axios
-      //a remplpacer par /user pour créer des users avec l'api
-      //commentaire a decommenter pour l'api
         .post('/user', {
             email: values.email,
             firstname: values.firstname,
             lastname: values.lastname,
             password: values.password,
-            accessLevel: 0
-            //name: values.firstname,
-            //job: values.lastname
+            accessLevel: window.location.pathname == '/register/admin' ? 1 : 0
         })
         .then(response => {
-            //remplacer 201 par 200
           if (response.status === 200) {
-            this.$router.push('/login');
+            window.location.pathname == '/register/admin' ? this.$router.push('/votes') : this.$router.push('/login');
             // eslint-disable-next-line no-console
             console.log("user added")
           }
