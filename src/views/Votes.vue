@@ -22,7 +22,7 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn rounded class="btn btn-primary">
-                <router-link :to="'/vote/'+vote.uuid">Créer un vote</router-link>
+                <router-link :to="'/vote/'+vote.uuid">Voir plus</router-link>
               </v-btn>
             </v-card-actions>
           </v-card>   
