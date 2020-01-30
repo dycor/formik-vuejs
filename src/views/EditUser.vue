@@ -7,7 +7,7 @@
       </v-toolbar>
       <v-divider></v-divider>
       <v-card class="elevation-12" style="margin-top: 20px;">
-        <Formik
+        <Formik :key="Math.random()"
           :initial-values="{
             firstname: user.firstname,
             lastname: user.lastname,
@@ -77,11 +77,16 @@ export default {
     };
   },
   created() {
+      // eslint-disable-next-line no-console
+    console.log('Hello')
     axios
       .get(`/user/${localStorage.token}`)
       .then(response => {
         if (response.status === 200) {
           this.user = response.data;
+
+        // eslint-disable-next-line no-console
+          console.log("Je suis ici",response.data)
         }
       })
       .catch(response => {
