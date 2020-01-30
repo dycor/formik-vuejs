@@ -13,6 +13,9 @@
             </p>
         </v-card-subtitle>
         <v-card-actions>
+          <v-btn>
+                <router-link to="/votes"  class="blue-text">Back</router-link>
+              </v-btn>
           <v-spacer></v-spacer>
           <v-btn text color="indigo" dark @click="handleSubmitVote">
             {{state}}
